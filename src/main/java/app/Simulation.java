@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -52,8 +53,8 @@ public class Simulation {
         }
         ImageView imageView = new ImageView(this.carImage);
         imageView.setRotate(90);
-        imageView.setFitWidth(parking.getParkingSpaceWidth());
-        imageView.setFitHeight(parking.getParkingSpaceHeight() - 30);
+        imageView.setFitWidth(parking.getParkingSpaceWidth() * 0.38);
+        imageView.setFitHeight(parking.getParkingSpaceHeight() * 0.38);
         return imageView;
     }
 

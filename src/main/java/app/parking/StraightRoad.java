@@ -14,20 +14,22 @@ public class StraightRoad extends VBox {
     private double width;
     private double height;
 
-    private StraightRoad(double width, double height) {
+    public StraightRoad(double width, double height) {
         this.width=width;
         this.height=height;
         this.roadPadding=height * 0.1;
         this.setPrefHeight(this.height);
         this.setPrefWidth(this.width);
+
+        initView();
     }
 
-    public static void addToParent(GridPane parent, int i, int j, double roadWidth, double roadHeight) {
-        StraightRoad straightRoad=new StraightRoad(roadWidth, roadHeight);
-        parent.add(straightRoad, i, j);
-        straightRoad.initView();
-
-    }
+//    public static void addToParent(GridPane parent, int i, int j, double roadWidth, double roadHeight) {
+//        StraightRoad straightRoad=new StraightRoad(roadWidth, roadHeight);
+//        parent.add(straightRoad, i, j);
+//        straightRoad.initView();
+//
+//    }
 
     private void initView() {
         this.setStyle("-fx-background-color: #2a9d8f");
@@ -36,9 +38,9 @@ public class StraightRoad extends VBox {
         VBox road=this.getRoad();
         this.getChildren().add(road);
 
-        Point2D point2D=road.localToScene(road.getLayoutBounds().getMinX(), road.getLayoutBounds().getMinY());
-        Line roadLine=getRoadLine(point2D.getX(), point2D.getY(), point2D.getX() + width, point2D.getY());
-        road.getChildren().add(roadLine);
+//        Point2D point2D=road.localToScene(road.getLayoutBounds().getMinX(), road.getLayoutBounds().getMinY());
+//        Line roadLine=getRoadLine(point2D.getX(), point2D.getY(), point2D.getX() + width, point2D.getY());
+//        road.getChildren().add(roadLine);
     }
 
     private VBox getRoad() {
