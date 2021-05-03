@@ -1,6 +1,5 @@
 package app;
 
-import app.controls.ControlPanel;
 import app.logging.LogPanel;
 import app.parking.Parking;
 import app.parking.cars.RandomCar;
@@ -25,7 +24,6 @@ import java.util.stream.Collectors;
 public class Simulation {
 
     private final LogPanel logPanel;
-    private final ControlPanel controlPanel;
     private final Parking parking;
 
     private final List<ParkingSpace> parkingSpaceList;
@@ -34,7 +32,6 @@ public class Simulation {
 
     public Simulation() {
         this.logPanel = new LogPanel();
-        this.controlPanel = new ControlPanel();
         this.parking = new Parking();
 
         this.parkingSpaceList = parking.getParkingSpaces();
