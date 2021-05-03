@@ -4,9 +4,10 @@ import app.Main;
 import app.parking.parkingSpaces.DisabledParkingSpace;
 import app.parking.parkingSpaces.NormalParkingSpace;
 import app.parking.parkingSpaces.ParkingSpace;
+import javafx.scene.Node;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Collection;
@@ -20,14 +21,16 @@ public class Parking extends HBox {
 
     public static final double BUILDING_WIDTH = 50;
 
-    private final Pane building;
+    @Getter
+    private final Node building;
     private final ParkingTemplate parkingTemplate;
 
     public Parking() {
-        this.building = this.getBuilding();
+        this.building = this.getBuildingPane();
+        this.getChildren().add(building);
         this.parkingTemplate = new ParkingTemplate(9, 20);
         initParkingTemplate();
-        this.getChildren().addAll(building, parkingTemplate);
+        this.getChildren().add(parkingTemplate);
     }
 
     private void initParkingTemplate() {
@@ -50,8 +53,8 @@ public class Parking extends HBox {
         parkingTemplate.setCellOf(DisabledParkingSpace.class, 1, 8);
     }
 
-    private Pane getBuilding() {
-        Pane pane = new Pane();
+    private Node getBuildingPane() {
+        HBox pane = new HBox();
         pane.setPrefHeight(Main.WINDOW_HEIGHT);
         pane.setPrefWidth(BUILDING_WIDTH);
         pane.setStyle("-fx-background-color: yellow");

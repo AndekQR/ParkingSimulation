@@ -1,7 +1,6 @@
 package app.parking;
 
 import app.Main;
-import app.controls.ControlPanel;
 import app.logging.LogPanel;
 import app.parking.parkingSpaces.DisabledParkingSpace;
 import app.parking.parkingSpaces.NormalParkingSpace;
@@ -21,10 +20,10 @@ public class ParkingTemplate extends GridPane {
     public static final double GAP_SIZE = 5;
     public static final double PADDING_SIZE = 10;
 
-    private int nodesInRow;
-    private int nodesInHeight;
+    private final int nodesInRow;
+    private final int nodesInHeight;
 
-    private List<List<Node>> addedElements;
+    private final List<List<Node>> addedElements;
 
     public ParkingTemplate(int nodesInHeight, int nodesInWidth) {
         this.nodesInHeight = nodesInHeight;
@@ -70,7 +69,7 @@ public class ParkingTemplate extends GridPane {
 
     public void setCellOf(Class<?> type, int x, int y) {
         try {
-            Node element = getElement(x+"_"+y, type);
+            Node element = getElement(x + "_" + y, type);
             setOrReplaceChild(element, x, y);
         } catch (IllegalArgumentException exception) {
             log.error(exception.getLocalizedMessage());
@@ -102,6 +101,6 @@ public class ParkingTemplate extends GridPane {
     }
 
     public Double getParkingSpaceHeight() {
-        return (Main.WINDOW_HEIGHT - ControlPanel.HEIGHT) / nodesInHeight - GAP_SIZE - (2 * PADDING_SIZE / nodesInRow);
+        return (Main.WINDOW_HEIGHT) / nodesInHeight - GAP_SIZE - (2 * PADDING_SIZE / nodesInRow);
     }
 }

@@ -1,9 +1,7 @@
 package app.parking;
 
 import javafx.geometry.Insets;
-import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
@@ -11,13 +9,13 @@ import javafx.scene.shape.Line;
 public class StraightRoad extends VBox {
 
     private final double roadPadding;
-    private double width;
-    private double height;
+    private final double width;
+    private final double height;
 
     public StraightRoad(double width, double height) {
-        this.width=width;
-        this.height=height;
-        this.roadPadding=height * 0.1;
+        this.width = width;
+        this.height = height;
+        this.roadPadding = height * 0.1;
         this.setPrefHeight(this.height);
         this.setPrefWidth(this.width);
 
@@ -35,7 +33,7 @@ public class StraightRoad extends VBox {
         this.setStyle("-fx-background-color: #2a9d8f");
         this.setAlignment(Pos.CENTER);
 
-        VBox road=this.getRoad();
+        VBox road = this.getRoad();
         this.getChildren().add(road);
 
 //        Point2D point2D=road.localToScene(road.getLayoutBounds().getMinX(), road.getLayoutBounds().getMinY());
@@ -44,7 +42,7 @@ public class StraightRoad extends VBox {
     }
 
     private VBox getRoad() {
-        VBox road=new VBox();
+        VBox road = new VBox();
         road.setStyle("-fx-background-color: #264653");
         road.setPrefWidth(this.width);
         road.setPrefHeight(this.height);
@@ -55,7 +53,7 @@ public class StraightRoad extends VBox {
     }
 
     private Line getRoadLine(double x1, double y1, double x2, double y2) {
-        Line line=new Line();
+        Line line = new Line();
         line.setStartX(x1);
         line.setStartY(y1);
         line.setEndX(x2);

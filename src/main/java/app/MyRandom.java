@@ -1,20 +1,21 @@
 package app;
 
-import java.util.Random;
+import java.util.SplittableRandom;
 
 public class MyRandom {
 
-    private Random random;
+    private final SplittableRandom random;
 
     public MyRandom() {
-        this.random = new Random();
+        this.random = new SplittableRandom();
     }
 
-    public long getTimeToLeaveParkingSpace() {
-        return getRandomNumber(5,20) * 1000L;
-    }
 
     public int getRandomNumber(int from, int to) {
-        return random.nextInt(to - from) + from;
+        return random.nextInt(from, to);
+    }
+
+    public double getRandomNumber() {
+        return random.nextDouble();
     }
 }
